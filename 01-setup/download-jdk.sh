@@ -15,7 +15,7 @@
 # DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.10_7.tar.gz"
 # For macOS aarch64 (Apple Silicon):
 # DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.10_7.tar.gz"
-# For For WSL (Ubuntu) on Intel/AMD (x86_64):
+# For WSL (Ubuntu) on Intel/AMD (x86_64):
 # DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.10_7.tar.gz"
 # For WSL (Ubuntu) on ARM (aarch64):
 # DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.10+7/OpenJDK17U-jdk_aarch64_linux_hotspot_17.0.10_7.tar.gz"
@@ -36,7 +36,7 @@ OS=$(uname -s)
 ARCH=$(uname -m)
 
 if [ "$OS" = "Darwin" ]; then
-    PLATFORM="osx"
+    PLATFORM="mac"
 elif [ "$OS" = "Linux" ]; then
     PLATFORM="linux"
 else
@@ -65,7 +65,7 @@ else
     echo "✅ curl is already installed."
 fi
 
-DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-${JDK_VERSION}%2B7/OpenJDK17U-jdk_${ARCH_SUFFIX}_linux_hotspot_${JDK_VERSION}_7.tar.gz"
+DOWNLOAD_URL="https://github.com/adoptium/temurin17-binaries/releases/download/jdk-${JDK_VERSION}%2B7/OpenJDK17U-jdk_${ARCH_SUFFIX}_${PLATFORM}_hotspot_${JDK_VERSION}_7.tar.gz"
 FILE_NAME="jdk-${JDK_VERSION}.tar.gz"
 
 echo "Step 3: Creating JDK folder..."
