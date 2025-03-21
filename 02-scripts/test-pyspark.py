@@ -47,3 +47,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+#run python3.11 02-scripts/test-pyspark.py

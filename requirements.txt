@@ -44,8 +44,8 @@
 ### On Windows, Use PowerShell (not cmd) - don't include the #:
 # py -3.11 -m venv .venv
 ### On Mac  - don't include the #:
-# brew install python@3.11
-# python3 -m venv .venv
+#brew install python@3.11
+#python3 -m venv .venv
 ### On Linux - don't include the #:
 # sudo apt update
 # sudo apt install python3.11 python3.11-venv
@@ -197,7 +197,7 @@ seaborn
 
 # Apache Kafka Python client (~1 MB)
 # Currently requires Python 3.11
-# kafka-python-ng
+kafka-python-ng
 
 # ======================================================
 # STREAM PROCESSING - CAN BE VERY LARGE

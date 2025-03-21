@@ -10,20 +10,8 @@ PORT=9092
 # Fail fast on errors
 set -e
 
-# Detect platform (macOS, Linux, WSL)
-OS=$(uname -s)
-
-if [ "$OS" = "Darwin" ]; then
-    PLATFORM="osx"
-elif [ "$OS" = "Linux" ]; then
-    PLATFORM="linux"
-else
-    echo "ERROR: Unsupported platform: $OS"
-    exit 1
-fi
-
 # Set JAVA_HOME only for this session (NOT exported)
-JAVA_HOME="$(pwd)/$JDK_FOLDER"
+JAVA_HOME="$(pwd)/$JDK_FOLDER/Contents/Home"
 PATH="$JAVA_HOME/bin:$(pwd)/$KAFKA_FOLDER/bin:$PATH"
 
 echo "Using temporary JAVA_HOME=$JAVA_HOME"

@@ -1,26 +1,13 @@
 # pro-analytics-apache-starter
 
 This project provides an isolated development environment for Apache tools like Kafka and PySpark using local JDK and virtual environments.  
-Works across macOS, Linux, and Windows (via WSL).  
+Works for macOS aarch64 (Apple Silicon)
 
 ---
 
 ## Getting Started
 
-### Just Windows Users: FIRST Set up WSL
-
-Install Windows Subsystem for Linux (WSL) by following the [instructions](01-setup/windows-users-install-wsl.md).
-
-Open WSL by opening a PowerShell terminal and running wsl.
-
-```powershell
-wsl
-```
-
-Important: All remaining commands must be run from within the WSL environment. 
-We will use the same ones the Mac/Linux users do when we are working in WSL. 
-
-### All Platforms: Change to Home Directory
+### Change to Home Directory
 
 Change to your home directory.
 Run these and all following commands in your shell ($ prompt) terminal.
@@ -29,19 +16,19 @@ Run these and all following commands in your shell ($ prompt) terminal.
 cd ~/
 ```
 
-### All Platforms: Clone Your Repository Into Your Home Directory
+### Clone Your Repository Into Your Home Directory
 
 1. Copy the template repo into your GitHub account. You can change the name as desired.
 2. Open a terminal in your "Projects" folder or where ever you keep your coding projects.
 3. Avoid using "Documents" or any folder that syncs automatically to OneDrive or other cloud services.
-4. Clone this repository into that folder - Windows users - clone into your default WSL directory.
+4. Clone this repository into that folder.
 
 In the command below, if you changed the repository name, use that name instead.  
 
 For example - clone with something like this - but use your GitHub account name and repo name:
 
 ```shell
-git clone https://github.com/denisecase/pro-analytics-apache-starter
+git clone https://github.com/Pojetta/pro-analytics-apache-starter
 ```
 
 Then cd into your new folder (if you changed the name, use that):
@@ -50,16 +37,16 @@ Then cd into your new folder (if you changed the name, use that):
 cd pro-analytics-apache-starter
 ```
 
-### All Platforms: Adjust Requirements (Packages Needed)
+### Adjust Requirements (Packages Needed)
 
 Review requirements.txt and comment / uncomment the specific packages needed for your project.  
 
 ---
 
-## Create Virtual Environment
+## Create Virtual Environment using Python 3.11
 
 ```shell
-python3 -m venv .venv
+python3.11 -m venv .venv
 source .venv/bin/activate
 ```
 

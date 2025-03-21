@@ -3,7 +3,7 @@
 
 # Run PySpark using the local JDK and Spark install
 # This script sets JAVA_HOME only for this session (NOT exported)
-# Works on Linux, macOS, and WSL
+# Works on macOS
 
 SPARK_FOLDER="spark"
 JDK_FOLDER="jdk"
@@ -14,15 +14,13 @@ EXECUTOR_MEMORY="2g"
 # Fail fast on any errors
 set -e
 
-# Step 1: Detect platform (macOS, Linux, WSL)
+# Step 1: Detect platform (macOS)
 OS=$(uname -s)
 
 if [ "$OS" = "Darwin" ]; then
     PLATFORM="osx"
-elif [ "$OS" = "Linux" ]; then
-    PLATFORM="linux"
 else
-    echo "ERROR: Unsupported platform: $OS"
+    echo "ERROR: This script is configured for macOS only. Detected: $OS"
     exit 1
 fi
 
@@ -38,7 +36,7 @@ echo "✅ Spark installation detected in $SPARK_FOLDER"
 
 # Step 3: Confirm Java installation
 # Set temporary JAVA_HOME (not exported)
-JAVA_HOME="$(pwd)/$JDK_FOLDER"
+JAVA_HOME="$(pwd)/$JDK_FOLDER/Contents/Home"
 PATH="$JAVA_HOME/bin:$(pwd)/$SPARK_FOLDER/bin:$PATH"
 
 # Test Java works locally without modifying system-wide settings
@@ -56,9 +54,8 @@ if pgrep -f org.apache.spark.deploy.SparkSubmit > /dev/null; then
     exit 1
 fi
 
-# Step 5: Adjust memory settings based on available system memory
-# Use available memory to configure driver and executor settings
-TOTAL_MEM=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo 2>/dev/null || sysctl -n hw.memsize 2>/dev/null || echo "0")
+# Step 5: Adjust memory settings based on available system memory (macOS)
+TOTAL_MEM=$(sysctl -n hw.memsize | awk '{print int($1/1024/1024)}')
 
 if [[ "$TOTAL_MEM" -gt 8000 ]]; then
     DRIVER_MEMORY="4g"
@@ -103,7 +100,7 @@ echo "To stop PySpark:"
 echo "pkill -f pyspark"
 echo ""
 echo "To test PySpark in the shell:"
-echo "./$SPARK_FOLDER/bin/pyspark"
+echo "./$SPARK_FOLDER/ 9: Check if PySbin/pyspark"
 echo ""
 
 # Step 11: Stream logs (Press Ctrl + C to exit)
